@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Code for the GSB Feature House Ads FPP feature.
+ */
+
+/**
+ * Implements hook_metatag_pattern_alter()
+ * If we are outputing a twitter:card and the field_icon is set to audio or video,
+ * then change to use the twitter player card.
+ */
+
+//field_image_key_image
+function gsb_feature_metatag_metatag_pattern_alter(&$pattern, &$types, $tag_name) {
+  if ($tag_name == 'twitter:card' && 
+      !empty($types['node']) &&
+      !empty($types['node']->field_image_key_image) &&
+      in_array($types['node']->field_icon[$types['node']->language][0]['value'], array('audio', 'video')))
+  {
+    $pattern = 'player'; 
+  } 
+}
+
