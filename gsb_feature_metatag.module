@@ -10,8 +10,6 @@
  * If we are outputing a twitter:card and the field_icon is set to audio or video,
  * then change to use the twitter player card.
  */
-
-//field_image_key_image
 function gsb_feature_metatag_metatag_pattern_alter(&$pattern, &$types, $tag_name) {
   if ($tag_name == 'twitter:card' && 
       !empty($types['node']) &&
