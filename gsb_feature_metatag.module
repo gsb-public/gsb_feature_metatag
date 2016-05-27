@@ -14,6 +14,7 @@ function gsb_feature_metatag_metatag_pattern_alter(&$pattern, &$types, $tag_name
   if ($tag_name == 'twitter:card' && 
       !empty($types['node']) &&
       !empty($types['node']->field_image_key_image) &&
+      !empty($types['node']->field_icon) &&
       in_array($types['node']->field_icon[$types['node']->language][0]['value'], array('audio', 'video')))
   {
     $pattern = 'player'; 
